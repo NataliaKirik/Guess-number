@@ -12,7 +12,7 @@ import StartGameScreen from "./Screens/StartGameScreen";
 import GameScreen from "./Screens/GameScreen";
 
 const App = () => {
-    [userNumber, setUserNumber] = useState()
+    const [userNumber, setUserNumber] = useState()
 
     const startGameHandler = (userNumber) => {
         setUserNumber(userNumber)
