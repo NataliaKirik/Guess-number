@@ -1,4 +1,4 @@
-import React, {useState, useRef} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import {StyleSheet, Text, TextInput, View, Button, Alert} from "react-native";
 import Card from "../Components/Card";
 import NumberContainer from "../Components/NumberContainer";
@@ -15,31 +15,39 @@ const generateRandomNumberBetween = (min, max, exclude) => {
 }
 
 const GameScreen = (props) => {
-    debugger
+    const {userNumber, guessRoundsHandler} = props
+
     const [currentGuessNumber, setCurrentGuessNumber] = useState(
-        generateRandomNumberBetween(1, 100, props.userNumber)
+        generateRandomNumberBetween(1, 100, userNumber)
     )
+    const [guessAttempt, setGuessAttempt] = useState(0)
 
     const currentLow = useRef(1)
     const currentHigh = useRef(100)
 
 
     const NextGuessHandler = buttonName => {
-        if ((buttonName === 'lower' && currentGuessNumber < props.userNumber) ||
-            (buttonName === 'greater' && currentGuessNumber > props.userNumber)) {
+        if ((buttonName === 'lower' && currentGuessNumber < userNumber) ||
+            (buttonName === 'greater' && currentGuessNumber > userNumber)) {
             Alert.alert("Don't lie to computer", '', [{text: "Sorry", style: 'cancel'}])
-            debugger
             return
         }
         if (buttonName === 'lower') {
             currentHigh.current = currentGuessNumber
-            debugger
         } else {
             currentLow.current = currentGuessNumber
         }
         const nextNumber = generateRandomNumberBetween(currentLow.current, currentHigh.current, currentGuessNumber)
         setCurrentGuessNumber(nextNumber)
+        setGuessAttempt(guessAttempt + 1)
     }
+
+    useEffect(() => {
+        if (currentGuessNumber === userNumber) {
+            guessRoundsHandler(guessAttempt)
+        }
+    }, [userNumber, guessRoundsHandler, currentGuessNumber])
+
 
     return (
         <View style={styles.screen}>
@@ -52,6 +60,7 @@ const GameScreen = (props) => {
         </View>
     );
 };
+
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
@@ -66,4 +75,5 @@ const styles = StyleSheet.create({
         maxWidth: "80%"
     }
 });
+
 export default GameScreen;
