@@ -1,5 +1,5 @@
-import React, {useState, useRef, useEffect} from "react";
-import {StyleSheet, Text, TextInput, View, Button, Alert} from "react-native";
+import React, {useEffect, useRef, useState} from "react";
+import {Alert, Button, StyleSheet, Text, View} from "react-native";
 import Card from "../Components/Card";
 import NumberContainer from "../Components/NumberContainer";
 
@@ -54,8 +54,8 @@ const GameScreen = (props) => {
             <Text> Opponent's Guess</Text>
             <NumberContainer>{currentGuessNumber}</NumberContainer>
             <Card style={styles.card}>
-                <Button title={'Lower'} onPress={NextGuessHandler.bind(this, 'lower')}></Button>
-                <Button title={'Greater'} onPress={NextGuessHandler.bind(this, 'greater')}></Button>
+                <Button title={'Lower'} onPress={NextGuessHandler.bind(this, 'lower')}/>
+                <Button title={'Greater'} onPress={NextGuessHandler.bind(this, 'greater')}/>
             </Card>
         </View>
     );
