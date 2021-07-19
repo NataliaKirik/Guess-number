@@ -75,7 +75,7 @@ const GameScreen = (props) => {
                 </Card>
                 <ScrollView>
                     {guessAttempt.map((n, index) => {
-                        return <GuessNumber number={n} index={guessAttempt.length - index}/>
+                        return <GuessNumber key={n} number={n} index={guessAttempt.length - index}/>
                     })}
                 </ScrollView>
             </View>

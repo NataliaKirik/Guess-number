@@ -27,15 +27,15 @@ const GameOverScreen = (props) => {
                 <View style={{
                     ...styles.imageContainer,
                     ...{
-                        width: availableDeviceWidth * 0.7,
-                        height: availableDeviceWidth * 0.7,
-                        borderRadius: (availableDeviceWidth * 0.7) / 2,
+                        width: availableDeviceWidth * 0.5,
+                        height: availableDeviceWidth * 0.5,
+                        borderRadius: (availableDeviceWidth * 0.5) / 2,
                         marginVertical: availableDeviceHeight / 30
                     }
                 }}>
                     <Image source={{
                         uri: 'https://media.wired.com/photos/593422ccfbdfa3763bab6d61/master/w_1920,c_limit/249-artwork-focus.jpg',
-                    }} style={styles.image}/>
+                    }} style={styles.image} resizeMode={"cover"}/>
                 </View>
                 <View style={{
                     ...styles.resultContainer,

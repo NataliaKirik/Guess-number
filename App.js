@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 import React, {useState} from 'react';
-import {StyleSheet, View,} from 'react-native';
+import {SafeAreaView, StyleSheet, View,} from 'react-native';
 import Header from "./Components/Header";
 import StartGameScreen from "./Screens/StartGameScreen";
 import GameScreen from "./Screens/GameScreen";
@@ -38,10 +38,10 @@ const App = () => {
     }
 
     return (
-        <View style={styles.screen}>
+        <SafeAreaView style={styles.screen}>
             <Header title={'Guess a number'}/>
             {content}
-        </View>
+        </SafeAreaView>
     );
 };
 
